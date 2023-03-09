@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './CountryPage.css';
 import arrowDark from '../../../assets/imgs/arrow-dark.png';
 import arrowWhite from '../../../assets/imgs/arrow-white.png';
 
 const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) => {
-    const current = data[0];
-    const borders = data[1];
-
-    console.log(borders);
+    const [current, borders] = useCallback([data[0], data[1]], [data]);
 
     return (
         <div className="countryPage">
@@ -49,7 +46,7 @@ const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) =
                                 <span className="title">Sub Region: </span>
                                 {current.subregion}
                             </p>
-                            {current.capital !== null && (
+                            {current.capital != null && current.capital != '' && (
                                 <p className="info">
                                     <span className="title">Capital: </span>
                                     {current.capital}
@@ -57,7 +54,7 @@ const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) =
                             )}
                         </div>
                         <div className="right">
-                            {current.topLevelDomain !== null &&
+                            {current.topLevelDomain != null &&
                                 current.topLevelDomain.length > 0 && (
                                     <p className="info">
                                         <span className="title">Top Level Domain: </span>
@@ -68,7 +65,7 @@ const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) =
                                             .map((domain) => ', ' + domain)}
                                     </p>
                                 )}
-                            {current.currencies !== null && current.currencies.length > 0 && (
+                            {current.currencies != null && current.currencies.length > 0 && (
                                 <p className="info">
                                     <span className="title">Currencies: </span>
 
@@ -76,7 +73,7 @@ const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) =
                                     {current.currencies.slice(1).map((name) => ', ' + name)}
                                 </p>
                             )}
-                            {current.languages !== null && current.languages.length > 0 && (
+                            {current.languages != null && current.languages.length > 0 && (
                                 <p className="info">
                                     <span className="title">Languages: </span>
 
