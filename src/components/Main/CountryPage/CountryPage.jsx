@@ -49,41 +49,41 @@ const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) =
                                 <span className="title">Sub Region: </span>
                                 {current.subregion}
                             </p>
-                            <p className="info">
-                                <span className="title">Capital: </span>
-                                {current.capital}
-                            </p>
+                            {current.capital !== null && (
+                                <p className="info">
+                                    <span className="title">Capital: </span>
+                                    {current.capital}
+                                </p>
+                            )}
                         </div>
                         <div className="right">
-                            <p className="info">
-                                <span className="title">Top Level Domain: </span>
-                                {
-                                    <>
+                            {current.topLevelDomain !== null &&
+                                current.topLevelDomain.length > 0 && (
+                                    <p className="info">
+                                        <span className="title">Top Level Domain: </span>
+
                                         {current.topLevelDomain[0]}
                                         {current.topLevelDomain
                                             .slice(1)
                                             .map((domain) => ', ' + domain)}
-                                    </>
-                                }
-                            </p>
-                            <p className="info">
-                                <span className="title">Currencies: </span>
-                                {current.currencies != null && current.currencies.length > 0 && (
-                                    <>
-                                        {current.currencies[0].name}
-                                        {current.currencies.slice(1).map((name) => ', ' + name)}
-                                    </>
+                                    </p>
                                 )}
-                            </p>
-                            <p className="info">
-                                <span className="title">Languages: </span>
-                                {
-                                    <>
-                                        {current.languages[0].name}
-                                        {current.languages.slice(1).map((lang) => ', ' + lang.name)}
-                                    </>
-                                }
-                            </p>
+                            {current.currencies !== null && current.currencies.length > 0 && (
+                                <p className="info">
+                                    <span className="title">Currencies: </span>
+
+                                    {current.currencies[0].name}
+                                    {current.currencies.slice(1).map((name) => ', ' + name)}
+                                </p>
+                            )}
+                            {current.languages !== null && current.languages.length > 0 && (
+                                <p className="info">
+                                    <span className="title">Languages: </span>
+
+                                    {current.languages[0].name}
+                                    {current.languages.slice(1).map((lang) => ', ' + lang.name)}
+                                </p>
+                            )}
                         </div>
                     </div>
                     {borders.length > 0 && (
