@@ -1,0 +1,100 @@
+.countryPage {
+    min-height: 100%;
+}
+
+.countryPage .top {
+    margin-bottom: 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+}
+
+.countryPage button {
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    letter-spacing: .01em;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.countryPage .top button {
+    width: 136px;
+    height: 40px;
+
+    gap: 12px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.countryPage .top button img {
+    height: 1.5em;
+}
+
+.countryPage .country {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.countryPage .country>* {
+    width: 45%;
+}
+
+.countryPage .name {
+    font-size: 2em;
+    font-weight: 800;
+
+    display: block;
+
+    margin-bottom: 35px;
+}
+
+.countryPage .infos {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 1.1em;
+}
+
+.countryPage .infos>div {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.countryPage .info {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.countryPage .title {
+    font-weight: 800;
+}
+
+.countryPage .borders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    align-items: center;
+
+    margin-top: 60px;
+
+    font-size: 1.1em;
+}
+
+.countryPage .borders button {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+
+    padding: .4rem 1.7rem;
+}
