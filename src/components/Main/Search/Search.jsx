@@ -1,10 +1,12 @@
 import React, { useState, useCallback, memo } from 'react';
 import CountryCard from './CountryCard/CountryCard';
+import { useTheme, isLightTeme } from '../../../contexts/ThemeContext';
 import './Search.css';
 import searchGrey from '../../../assets/imgs/search-grey.png';
 import searchWhite from '../../../assets/imgs/search-white.png';
 
-const Search = memo(({ currentTheme, theme, countries, cardClick }) => {
+const Search = memo(({ countries, cardClick }) => {
+    const theme = useTheme();
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState('');
 
@@ -46,29 +48,13 @@ const Search = memo(({ currentTheme, theme, countries, cardClick }) => {
     return (
         <div className="search">
             <div className="top">
-                <SearchInput
-                    currentTheme={currentTheme}
-                    theme={theme}
-                    search={search}
-                    handleSearchChange={handleSearchChange}
-                />
-                <Sort
-                    currentTheme={currentTheme}
-                    regions={regions}
-                    sort={sort}
-                    handleSortChange={handleSortChange}
-                />
+                <SearchInput search={search} handleSearchChange={handleSearchChange} />
+                <Sort regions={regions} sort={sort} handleSortChange={handleSortChange} />
             </div>
 
             <div className="results">
                 {sortedCountries.map((c) => (
-                    <CountryCard
-                        key={c.name}
-                        data={c}
-                        currentTheme={currentTheme}
-                        theme={theme}
-                        cardClick={cardClick}
-                    />
+                    <CountryCard key={c.name} data={c} cardClick={cardClick} />
                 ))}
             </div>
         </div>
@@ -76,21 +62,20 @@ const Search = memo(({ currentTheme, theme, countries, cardClick }) => {
 });
 export default Search;
 
-const SearchInput = memo(({ currentTheme, theme, search, handleSearchChange }) => {
-    const searchImage = useCallback(
-        currentTheme.elements === theme.light.elements ? searchGrey : searchWhite,
-        [currentTheme]
-    );
+const SearchInput = memo(({ search, handleSearchChange }) => {
+    const theme = useTheme();
+
+    const searchImage = useCallback(isLightTeme(theme) ? searchGrey : searchWhite, [theme]);
 
     return (
         <input
             type="search"
             placeholder="Search for a country..."
-            className={currentTheme.elements === theme.light.elements ? 'light' : 'dark'}
+            className={theme.name}
             style={{
                 backgroundImage: `url(${searchImage})`,
-                backgroundColor: currentTheme.elements,
-                color: currentTheme.text
+                backgroundColor: theme.elements,
+                color: theme.text
             }}
             value={search}
             onInput={handleSearchChange}
@@ -98,22 +83,27 @@ const SearchInput = memo(({ currentTheme, theme, search, handleSearchChange }) =
     );
 });
 
-const Sort = memo(({ currentTheme, regions, sort, handleSortChange }) => {
+const Sort = memo(({ regions, sort, handleSortChange }) => {
+    const theme = useTheme();
     const [show, setShow] = useState(false);
+
+    const switchDisplay = () => {
+        setShow(!show);
+    };
 
     return (
         <div className={show ? 'sort open' : 'sort'}>
             <div
                 className="current"
-                onClick={() => setShow(!show)}
-                style={{ backgroundColor: currentTheme.elements, color: currentTheme.text }}
+                onClick={switchDisplay}
+                style={{ backgroundColor: theme.elements, color: theme.text }}
             >
                 <span>{sort === '' ? 'Filter by Region' : sort}</span>
             </div>
             {show && (
                 <div
                     className="list"
-                    style={{ backgroundColor: currentTheme.elements, color: currentTheme.text }}
+                    style={{ backgroundColor: theme.elements, color: theme.text }}
                 >
                     <ul>
                         {sort !== '' && (

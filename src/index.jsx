@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
+import ThemeProvider from './contexts/ThemeContext';
 
 const App = () => {
     const theme = {
@@ -19,21 +20,11 @@ const App = () => {
         }
     };
 
-    const [currentTheme, setCurrentTheme] = useState(theme.light);
-    
-    /**
-     * Switches the theme between light and dark
-     *
-     */
-    const handleThemeSwitch = () => {
-        setCurrentTheme(currentTheme.elements === theme.light.elements ? theme.dark : theme.light);
-    };
-
     return (
-        <>
-            <Header currentTheme={currentTheme} theme={theme} switchTheme={handleThemeSwitch} />
-            <Main currentTheme={currentTheme} theme={theme} />
-        </>
+        <ThemeProvider>
+            <Header />
+            <Main />
+        </ThemeProvider>
     );
 };
 

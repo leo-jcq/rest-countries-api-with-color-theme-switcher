@@ -1,24 +1,21 @@
 import React, { useCallback } from 'react';
+import { useTheme, isLightTeme } from '../../../contexts/ThemeContext';
 import './CountryPage.css';
 import arrowDark from '../../../assets/imgs/arrow-dark.png';
 import arrowWhite from '../../../assets/imgs/arrow-white.png';
 
-const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) => {
+const CountryPage = ({ data, countryClick, returnClick }) => {
+    const theme = useTheme();
     const [current, borders] = useCallback([data[0], data[1]], [data]);
 
     return (
         <div className="countryPage">
             <div className="top">
                 <button
-                    style={{ backgroundColor: currentTheme.elements, color: currentTheme.text }}
+                    style={{ backgroundColor: theme.elements, color: theme.text }}
                     onClick={returnClick}
                 >
-                    <img
-                        src={
-                            currentTheme.elements === theme.light.elements ? arrowDark : arrowWhite
-                        }
-                        alt=""
-                    />
+                    <img src={isLightTeme(theme) ? arrowDark : arrowWhite} alt="" />
                     <span>Back</span>
                 </button>
             </div>
@@ -90,8 +87,8 @@ const CountryPage = ({ currentTheme, theme, data, countryClick, returnClick }) =
                                 <button
                                     key={border.name.toLowerCase()}
                                     style={{
-                                        backgroundColor: currentTheme.elements,
-                                        color: currentTheme.text
+                                        backgroundColor: theme.elements,
+                                        color: theme.text
                                     }}
                                     onClick={() => countryClick(border.alpha3Code)}
                                 >

@@ -1,9 +1,11 @@
 import React, { memo, useLayoutEffect, useState } from 'react';
 import Search from './Search/Search';
 import CountryPage from './CountryPage/CountryPage';
+import { useTheme } from '../../contexts/ThemeContext';
 import './Main.css';
 
-const Main = memo(({ currentTheme, theme }) => {
+const Main = memo(() => {
+    const theme = useTheme();
     const [countries, setCountries] = useState([]);
     const [printedCountry, setPrintedCountry] = useState([]);
 
@@ -19,7 +21,7 @@ const Main = memo(({ currentTheme, theme }) => {
     /**
      * Handle card click
      *
-     * @param {Object} countryCode
+     * @param {object} countryCode
      */
     const handleCountryClick = (countryCode) => {
         // search for the country
@@ -50,21 +52,11 @@ const Main = memo(({ currentTheme, theme }) => {
     };
 
     return (
-        <div
-            className="main"
-            style={{ color: currentTheme.text, backgroundColor: currentTheme.bg }}
-        >
+        <div className="main" style={{ color: theme.text, backgroundColor: theme.bg }}>
             {printedCountry.length === 0 ? (
-                <Search
-                    currentTheme={currentTheme}
-                    theme={theme}
-                    countries={countries}
-                    cardClick={handleCountryClick}
-                />
+                <Search countries={countries} cardClick={handleCountryClick} />
             ) : (
                 <CountryPage
-                    currentTheme={currentTheme}
-                    theme={theme}
                     data={printedCountry}
                     countryClick={handleCountryClick}
                     returnClick={handleReturnClick}

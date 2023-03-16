@@ -1,11 +1,13 @@
 import React, { memo } from 'react';
+import { useTheme } from '../../../../contexts/ThemeContext';
 import './CountryCard.css';
 
-const CountryCard = memo(({ data, currentTheme, cardClick }) => {
+const CountryCard = memo(({ data, cardClick }) => {
+    const theme = useTheme();
     return (
         <div
             className="countryCard"
-            style={{ backgroundColor: currentTheme.elements }}
+            style={{ backgroundColor: theme.elements }}
             onClick={() => cardClick(data.alpha3Code)}
         >
             <img src={data.flag} alt={data.name.toLowerCase()} />
