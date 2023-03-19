@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: *Not yet*
+- Solution URL: [https://www.frontendmentor.io/solutions/rest-countries-api-using-react-mIBRi9FldT](https://www.frontendmentor.io/solutions/rest-countries-api-using-react-mIBRi9FldT)
 - Live Site URL: [https://leo-jcq.github.io/rest-countries-api-with-color-theme-switcher/](https://leo-jcq.github.io/rest-countries-api-with-color-theme-switcher/)
 
 ## My process
