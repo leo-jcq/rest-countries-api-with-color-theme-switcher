@@ -1,0 +1,57 @@
+@import "/scss/variables";
+
+.header {
+    width: 100%;
+    height: 160px;
+
+    padding: 0 32px;
+
+    background-color: var(--elements);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 -5px 10px $dark-gray;
+
+    color: var(--text);
+
+    font-size: 0.8rem;
+
+    & .theme {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        font-size: 1em;
+        font-weight: 600;
+
+        cursor: pointer;
+    }
+
+    & img {
+        height: 1.2em;
+
+        object-fit: contain;
+    }
+}
+
+@media screen and (min-width: 475px) {
+    .header {
+        height: 120px;
+
+        padding: 0 50px;
+
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .header {
+        height: 80px;
+
+        padding: 0 80px;
+
+        font-size: 1em;
+    }
+}

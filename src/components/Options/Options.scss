@@ -1,0 +1,90 @@
+.options {
+    width: fit-content;
+
+    position: relative;
+
+    border-radius: 5px;
+
+    color: var(--text);
+
+    & .current {
+        width: 200px;
+        height: 55px;
+
+        padding: 0 25px;
+
+        border-radius: 5px;
+
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+        background-color: var(--elements);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        cursor: pointer;
+
+        position: relative;
+        z-index: 99;
+
+        &::after {
+            content: "";
+
+            width: 0.5em;
+            height: 0.5em;
+
+            border-bottom: 1px solid currentColor;
+            border-left: 1px solid currentColor;
+
+            transform: rotate(45deg);
+
+            transition: transform 0.2s ease-out;
+        }
+    }
+
+    & .list {
+        width: 100%;
+
+        position: absolute;
+
+        top: calc(100% + 5px);
+
+        border-radius: 5px;
+
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+        background-color: var(--elements);
+
+        overflow: hidden;
+
+        padding: 21px;
+
+        list-style-type: none;
+    }
+
+    & .option {
+        padding: 7px 0;
+
+        cursor: pointer;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        &.active,
+        &:hover {
+            filter: invert(50%);
+        }
+    }
+
+    &.open {
+        & .current::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
