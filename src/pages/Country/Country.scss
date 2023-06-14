@@ -54,6 +54,16 @@
         align-items: center;
     }
 
+    & .flag {
+        width: 45%;
+
+        object-fit: contain;
+    }
+
+    & .details {
+        width: 45%  ;
+    }
+
     & .name {
         font-size: 2em;
         font-weight: 800;
@@ -108,7 +118,7 @@
 @media screen and (max-width: 1125px) {
     .contryPage {
         & .flag,
-        & .infos {
+        & .details {
             width: 100%;
         }
     }
