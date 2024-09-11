@@ -1,5 +1,7 @@
 {
   "name": "rest-countries-api-with-color-theme-switcher",
+  "author": "Léo Jacquet <leojacquet2003@gmail.com>",
+  "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "type": "module",
