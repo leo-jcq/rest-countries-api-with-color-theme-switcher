@@ -1,14 +1,19 @@
 import useLocalStorage from '@/hooks/useLocalStorage';
-import { FC, PropsWithChildren, useCallback } from 'react';
+import { FC, PropsWithChildren, useCallback, useMemo } from 'react';
 import ThemeCotext, { THEMES, ThemeType, USER_PREFER_DARK } from './ThemeContext';
 
+/**
+ * The theme context provider
+ *
+ * @type {FC<PropsWithChildren>}
+ */
 const ThemeContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const [theme, setTheme] = useLocalStorage<ThemeType>(
         'theme',
         USER_PREFER_DARK ? THEMES.dark : THEMES.light
     );
 
-    const isLightTeme = theme === THEMES.light;
+    const isLightTeme = useMemo(() => theme === THEMES.light, [theme]);
 
     const toggleTheme = useCallback(() => {
         setTheme(isLightTeme ? THEMES.dark : THEMES.light);

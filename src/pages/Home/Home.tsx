@@ -6,6 +6,11 @@ import Filters from './components/Filters/Filters';
 import SearchBar from './components/SearchBar/SearchBar';
 import './Home.scss';
 
+/**
+ * The home page
+ * 
+ * @type {FC}
+ */
 const Home: FC = () => {
     const [search, setSearch] = useState('');
     const [region, setRegion] = useState('');

@@ -7,6 +7,11 @@ type CountryCardProps = {
     country: Country;
 };
 
+/**
+ * Print a country in a card
+ * 
+ * @type {FC<CountryCardProps>}
+ */
 const CountryCard: FC<CountryCardProps> = ({ country }) => {
     return (
         <Link to={`/country/${country.alpha3Code}`} className="country-card">

@@ -5,6 +5,11 @@ import Header from './layout/Header/Header';
 import Country from './pages/Country/Country';
 import Home from './pages/Home/Home';
 
+/**
+ * The main component of the application
+ * 
+ * @type {FC}
+ */
 const App: FC = () => {
     const { pathname } = useLocation();
 

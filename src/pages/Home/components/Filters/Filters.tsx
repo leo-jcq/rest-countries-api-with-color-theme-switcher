@@ -8,6 +8,11 @@ type FiltersProps = {
     setFilter: Setter<string>;
 };
 
+/**
+ * The rerion filter
+ * 
+ * @type {FC<FiltersProps>}
+ */
 const Filters: FC<FiltersProps> = ({ filter, setFilter }) => {
     const [open, setOpen] = useState(false);
     const filtersRef = useRef<HTMLDivElement>(null);

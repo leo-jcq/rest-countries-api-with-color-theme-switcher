@@ -7,6 +7,11 @@ type SearchBarProps = {
     setSearch: Setter<string>;
 };
 
+/**
+ * The search bar
+ * 
+ * @type {FC<SearchBarProps>}
+ */
 const SearchBar: FC<SearchBarProps> = ({ search, setSearch }) => {
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setSearch(e.target.value);

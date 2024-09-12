@@ -5,6 +5,11 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
+/**
+ * The header of the application
+ * 
+ * @type {FC}
+ */
 const Header: FC = () => {
     const { theme, isLightTeme, toggleTheme } = useThemeContext();
 

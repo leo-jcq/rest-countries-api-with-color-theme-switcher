@@ -7,6 +7,11 @@ import { FC, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Country.scss';
 
+/**
+ * The country page
+ * 
+ * @type {FC}
+ */
 const Country: FC = () => {
     const { code } = useParams();
     const { isLightTeme } = useThemeContext();
@@ -51,6 +56,11 @@ type CountryInfosProps = {
     country: CountryType;
 };
 
+/**
+ * The informations of a country
+ * 
+ * @type {FC<CountryInfosProps>} 
+ */
 const CountryInfos: FC<CountryInfosProps> = ({ country }) => {
     return (
         <div className="country-infos">
@@ -114,6 +124,11 @@ type CountryBordersProps = {
     country: CountryType;
 };
 
+/**
+ * The borders of a country
+ * 
+ * @type {FC<CountryBordersProps>}
+ */
 const CountryBorders: FC<CountryBordersProps> = ({ country }) => {
     if (country.borders && country.borders.length > 0) {
         return (
