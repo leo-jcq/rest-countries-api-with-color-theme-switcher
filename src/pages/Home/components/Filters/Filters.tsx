@@ -10,7 +10,7 @@ type FiltersProps = {
 
 /**
  * The rerion filter
- * 
+ *
  * @type {FC<FiltersProps>}
  */
 const Filters: FC<FiltersProps> = ({ filter, setFilter }) => {
@@ -44,7 +44,7 @@ const Filters: FC<FiltersProps> = ({ filter, setFilter }) => {
 
     return (
         <div ref={filtersRef} className={`filters filters--${open ? 'open' : 'close'}`}>
-            <div className="filters__current" onClick={switchOpen}>
+            <div className="filters__current" title="Filter by Region" onClick={switchOpen}>
                 {filter === '' ? 'Filter by Region' : filter}
             </div>
 
@@ -61,6 +61,7 @@ const Filters: FC<FiltersProps> = ({ filter, setFilter }) => {
                             filter === region ? ' filters__list__item--active' : ''
                         }`}
                         data-value={region}
+                        title={region}
                         onClick={handleFilterChange}
                     >
                         {region}
