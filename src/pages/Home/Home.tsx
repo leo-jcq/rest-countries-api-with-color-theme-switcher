@@ -2,9 +2,9 @@ import data from '@/assets/data.json';
 import { Country } from '@/types/country';
 import { FC, useMemo, useState } from 'react';
 import Card from './components/CountryCard/CountryCard';
+import Filters from './components/Filters/Filters';
 import SearchBar from './components/SearchBar/SearchBar';
 import './Home.scss';
-import Filters from './components/Filters/Filters';
 
 const Home: FC = () => {
     const [search, setSearch] = useState('');

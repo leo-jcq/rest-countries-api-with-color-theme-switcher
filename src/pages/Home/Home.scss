@@ -1,7 +1,5 @@
 @use "@/scss/variables" as *;
 
-$desktop-width: 0;
-
 .home {
     padding: 24px 16px 65px 16px;
 
@@ -27,10 +25,7 @@ $desktop-width: 0;
 
     &__countries {
         display: grid;
-        grid-template-columns: repeat(
-            auto-fill,
-            minmax($country-card-width, 1fr)
-        );
+        grid-template-columns: repeat(auto-fill, minmax($country-card-width, 1fr));
         gap: 40px;
         justify-items: center;
     }
