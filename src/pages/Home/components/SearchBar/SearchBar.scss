@@ -19,7 +19,7 @@
 
     @each $theme, $map in $themes {
         .theme--#{$theme} & {
-            background-image: url("@public/search-#{$theme}.png");
+            background-image: url("@imgs/search-#{$theme}.png");
         }
     }
 
