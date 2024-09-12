@@ -1,0 +1,64 @@
+@use "@/scss/mixins" as *;
+@use "@/scss/theme" as *;
+@use "@/scss/variables" as *;
+
+$desktop-width: 650px;
+
+.header {
+    @include size(100%, 80px);
+
+    padding: 0 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 -5px 10px $dark-gray;
+
+    @include themed {
+        background-color: c("elements");
+
+        color: c("text");
+    }
+
+    @media screen and (min-width: $desktop-width) {
+        padding: 0 80px;
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 800;
+        text-decoration: none;
+        color: currentColor;
+
+        @media screen and (min-width: $desktop-width) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__theme {
+        font-weight: 600;
+
+        background-color: transparent;
+
+        border: none;
+
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+
+        cursor: pointer;
+
+        @include themed {
+            color: c("text");
+        }
+
+        @media screen and (min-width: $desktop-width) {
+            font-size: 1.1rem;
+        }
+
+        &__img {
+            @include size(1em);
+        }
+    }
+}

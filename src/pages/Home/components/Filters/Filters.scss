@@ -1,0 +1,86 @@
+@use "@/scss/mixins" as *;
+@use "@/scss/theme" as *;
+
+.filters {
+    width: fit-content;
+
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 300;
+
+    @include themed {
+        color: c("text");
+    }
+
+    @media screen and (min-width: 650px) {
+        font-size: 16px;
+    }
+
+    &__current,
+    &__list {
+        border-radius: 5px;
+
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+
+        @include themed {
+            background-color: c("elements");
+        }
+    }
+
+    &__current {
+        @include size(200px, 48px);
+
+        padding: 0 22px 0 24px;
+
+        cursor: pointer;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (min-width: 650px) {
+            height: 56px;
+        }
+
+        &::after {
+            content: "";
+
+            @include size(8px);
+
+            border-bottom: 1px solid currentColor;
+            border-left: 1px solid currentColor;
+
+            transform: rotate(-135deg);
+
+            transition: transform 0.2s ease-out;
+        }
+    }
+
+    &--open &__current {
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+
+    &__list {
+        width: 100%;
+
+        display: none;
+
+        list-style-type: none;
+
+        padding: 10px 0;
+
+        position: absolute;
+        top: calc(100% + 5px);
+
+        &__item {
+            padding: 8px 24px;
+        }
+    }
+
+    &--open &__list {
+        display: block;
+    }
+}

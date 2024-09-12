@@ -1,0 +1,51 @@
+@use "@/scss/mixins" as *;
+@use "@/scss/theme" as *;
+@use "@/scss/variables" as *;
+
+.country-card {
+    @include size($country-card-width, 336px);
+
+    display: block;
+    background-color: 5px;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+
+    text-decoration: none;
+
+    @include themed {
+        background-color: c("elements");
+
+        color: c("text");
+    }
+
+    &__flag {
+        @include size(100%, 160px);
+
+        object-fit: cover;
+
+        border-radius: 5px 5px 0 0;
+    }
+
+    &__content {
+        padding: 24px;
+
+        &__name {
+            font-size: 1.2em;
+            font-weight: 800;
+
+            margin-bottom: 16px;
+        }
+
+        &__infos {
+            &__info {
+                font-weight: 300;
+
+                &__title {
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+}

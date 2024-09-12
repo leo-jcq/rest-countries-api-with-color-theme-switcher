@@ -1,0 +1,9 @@
+@use "@/scss/theme" as *;
+
+.app {
+    min-height: 100vh;
+    
+    @include themed {
+        background-color: c("bg");
+    }
+}

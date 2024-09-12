@@ -1,0 +1,39 @@
+@use "@/scss/mixins" as *;
+@use "@/scss/theme" as *;
+
+.search-bar {
+    max-width: 480px;
+    @include size(100%, 48px);
+
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+ 
+    padding: 0 16px 0 75px;
+
+    background-size: 16px;
+    background-position: left 32px center;
+    background-repeat: no-repeat;
+
+    @each $theme, $map in $themes {
+        .theme--#{$theme} & {
+            background-image: url("@public/search-#{$theme}.png");
+        }
+    }
+
+    @include themed {
+        background-color: c("elements");
+
+        color: c("text");
+
+        &::placeholder {
+            color: c("text");
+        }
+    }
+
+    @media screen and (min-width: 650px) {
+        height: 56px;
+    }
+}

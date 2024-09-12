@@ -1,0 +1,6 @@
+@use "./variables" as *;
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}

@@ -8,7 +8,9 @@ export default defineConfig({
     base: '/rest-countries-api-with-color-theme-switcher',
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@imgs': fileURLToPath(new URL('./src/assets/imgs', import.meta.url)),
+            '@public': fileURLToPath(new URL('./', import.meta.url))
         }
     }
 });

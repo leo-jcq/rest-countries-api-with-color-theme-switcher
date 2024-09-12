@@ -1,0 +1,44 @@
+@use "./variables" as *;
+
+$themes: (
+    "light": (
+        elements: $white,
+        bg: $very-light-gray,
+        text: $very-dark-blue-text,
+    ),
+    "dark": (
+        elements: $dark-blue,
+        bg: $very-dark-blue-bg,
+        text: $white,
+    ),
+);
+
+// Duplicate all css rules defined inside in dark and light
+@mixin themed() {
+    // For each theme defined in the $themes variable
+    @each $theme, $map in $themes {
+        // Define a new matcher .theme--theme-name the-current-matcher
+        .theme--#{$theme} & {
+            // Define a global variable containing a hash of all current values of the theme
+            $theme-map: () !global;
+            @each $key, $sub-map in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            // Execute the original content of the mixin
+            @content;
+            // Delete the global variable
+            $theme-map: null !global;
+        }
+    }
+}
+
+// Read the value of the key in the temporary map defined by the themed mixin
+@function c($key) {
+    @return map-get($theme-map, $key);
+}
