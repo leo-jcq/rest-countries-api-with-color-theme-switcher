@@ -2,8 +2,6 @@
 @use "@/scss/placeholders" as *;
 @use "@/scss/theme" as *;
 
-$desktop-width: 500px;
-
 .country-page {
     padding: 41px 28px;
 
@@ -67,7 +65,7 @@ $desktop-width: 500px;
         }
 
         &__details {
-            @media screen and (min-width: $desktop-width) {
+            @media screen and (min-width: 1000px) {
                 width: 45%;
             }
 
@@ -136,10 +134,11 @@ $desktop-width: 500px;
 
         margin: 0 16px 22px 0;
 
-        display: inline;
+        display: inline-block;
     }
 
     &__list {
+        display: flex;
         flex-wrap: wrap;
         gap: 10px;
         align-items: center;
